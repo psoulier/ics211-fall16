@@ -112,8 +112,8 @@ public class ArrarySortTest {
 		
 		tmpArr = ia2.clone();
 		as.bubbleSort(tmpArr, icmp);
-		assertTrue(as.getSwapCount >= 4);
-		assertTrue(as.getCompareCount >= 0);
+		assertTrue(as.getSwapCount() >= 4);
+		assertTrue(as.getCompareCount() >= 0);
 		
 		// Repeat with insertion and selection sort.
 	}
