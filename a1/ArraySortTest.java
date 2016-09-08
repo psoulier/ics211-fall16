@@ -13,7 +13,7 @@ class IntComparator implements Comparator<Integer> {
 	}
 }
 
-public class ArrarySortTest {
+public class ArraySortTest {
 
 	
 	static void checkOrder(Integer[] arr) {
