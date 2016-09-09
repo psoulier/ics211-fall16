@@ -13,7 +13,7 @@ class IntComparator implements Comparator<Integer> {
 	}
 }
 
-public class ArrarySortTest {
+public class ArraySortTest {
 
 	
 	static void checkOrder(Integer[] arr) {
@@ -112,8 +112,8 @@ public class ArrarySortTest {
 		
 		tmpArr = ia2.clone();
 		as.bubbleSort(tmpArr, icmp);
-		assertTrue(as.swapCount >= 4);
-		assertTrue(as.cmpCount >= 0);
+		assertTrue(as.getSwapCount() >= 4);
+		assertTrue(as.getCompareCount() >= 0);
 		
 		// Repeat with insertion and selection sort.
 	}
