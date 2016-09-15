@@ -115,34 +115,6 @@ public class MyArrayListTest {
 		assertEquals(MAX+2, ial.size());
 	}
 	
-	@Test
-	public void testAddPastEnd() {
-		MyArrayList<Integer>	ial = new MyArrayList<>();
-		
-		// Make array list with [0, 1, 2, ..., MAX-1]
-		for (int i = 0; i < MAX; i++) {
-			ial.add(i);
-		}
-
-		// Add element way past current last element so we get
-		// an array list with [0, 1, 2, ..., MAX-1, null, null, ..., -1]
-		ial.add(MAX*2-1, -1);
-		
-		// Make sure the first half is unchanged...
-		for (int i = 0; i < MAX; i++) {
-			assertEquals(new Integer(i), ial.get(i));
-		}
-		
-		// Check to make sure the intermediate indices are null...
-		for (int i = MAX; i < MAX-1; i++) {
-			assertTrue(ial.get(i) == null);
-		}
-		
-		// Make sure the last element is -1 and the size is correct...
-		assertEquals(new Integer(-1), ial.get(MAX*2-1));
-		assertEquals(MAX*2, ial.size());
-		
-	}
 	
 	class IntComparator implements Comparator<Integer> {
 		public int compare(Integer a, Integer b) {
