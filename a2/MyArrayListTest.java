@@ -12,7 +12,13 @@ public class MyArrayListTest {
 		MyArrayList<Integer>	ial = new MyArrayList<>();
 		
 		assertEquals(0, ial.size());
-		assertEquals(null, ial.get(0));
+
+                try {
+                  ial.get(0);
+                }
+                catch (ArrayIndexOutOfBoundsException e) {
+                    fail("Bad stuff");
+                }
 	}
 	
 	/**
@@ -39,11 +45,22 @@ public class MyArrayListTest {
 		}
 		
 		// Check invalid indices...
-		assertEquals(null, ial.get(-1));
-		assertEquals(null, ial.get(MAX+10));
+                try {
+                    assertEquals(null, ial.get(-1));
+                    fail("Bad stuff");
+                }
+                catch (ArrayIndexOutOfBoundsException e) {
+                }
+
+                try {
+  		    assertEquals(null, ial.get(MAX+10));
+                    fail("Bad stuff");
+                }
+                catch (ArrayIndexOutOfBoundsException e) {
+                }
 	}
 	
-	@Test(expected = IndexOutOfBoundsException.class)
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddOutOfBounds() {
 		MyArrayList<Integer>	ial = new MyArrayList<>();
 		
@@ -62,7 +79,7 @@ public class MyArrayListTest {
 		// Make sure the elements were added correctly.  MAX should be big enough
 		// to cause a resize.
 		for (int i = 0; i < MAX; i++) {
-			assertEquals(new Integer(i), ial.get(i));
+		    assertEquals(new Integer(i), ial.get(i));
 		}
 	}
 	
