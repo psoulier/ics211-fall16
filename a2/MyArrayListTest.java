@@ -15,9 +15,9 @@ public class MyArrayListTest {
 
                 try {
                   ial.get(0);
+                    fail("Bad stuff");
                 }
                 catch (ArrayIndexOutOfBoundsException e) {
-                    fail("Bad stuff");
                 }
 	}
 	
