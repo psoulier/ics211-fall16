@@ -66,7 +66,7 @@ public class MyArrayListTest {
         }
     }
 
-    @Test(expected = Exception.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void testAddOutOfBounds() {
         List211<Integer>    ial = new MyArrayList<>();
 
