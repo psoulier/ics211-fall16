@@ -4,11 +4,7 @@
 After exporting a project into a JAR file from Eclipse, there are two ways to check what's in the
 file:
 
-1. From the command line:
-```
-$ jar tf archive.jar
-```
-Where "archive.jar" is whatever file the project was exported to.
+1. From the command line: `$ jar tf archive.jar` where "archive.jar" is whatever file the project was exported to.
 
 2. For some reason (mostly Windows systems), the jar command isn't in the path. An alternative is to
    import the JAR file from eclipse. Eclipse will show the contents of the file. NOTE: make sure you
