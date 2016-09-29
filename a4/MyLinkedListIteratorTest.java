@@ -67,8 +67,10 @@ public class MyLinkedListIteratorTest {
         i = it.next();
         assertEquals(new Integer(0), i);
 
+        assertFalse(it.hasNext());
+        assertTrue(it.hasPrevious());
+
         checkNoNext(it);
-        checkNoPrev(it);
     }
 
     /**
@@ -115,13 +117,6 @@ public class MyLinkedListIteratorTest {
         // Make sure we iterated through the correct number of elements...
         assertEquals(MAX, i);
 
-        /*
-         *  Move backwards, back to the beginning, with the same iterator...
-         *  Remember, once hasNext returns false, the iterator is conceptually
-         *  positioned on the last node. So, the "previous" element is n-1.
-         *  Decrement 'i' to account for this.
-         */
-        i--;
         while (it.hasPrevious()) {
             i--;
             assertEquals(new Integer(i), it.previous());
@@ -177,7 +172,6 @@ public class MyLinkedListIteratorTest {
             assertTrue(i <= MAX);
         }
 
-        i--;
         while (it.hasPrevious()) {
             i--;
             assertEquals(new Integer(i), ill.get(it.previousIndex()));
@@ -217,7 +211,6 @@ public class MyLinkedListIteratorTest {
             assertTrue(i <= MAX);
         }
 
-        i--;
         while (it.hasPrevious()) {
             i--;
 
