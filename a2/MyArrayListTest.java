@@ -16,7 +16,7 @@ public class MyArrayListTest {
 
     @Test
     public void testEmpty() {
-        List211<Integer>    ial = new MyArrayList<>();
+        MyArrayList<Integer>    ial = new MyArrayList<>();
 
         assertEquals(0, ial.size());
         try {
@@ -35,7 +35,7 @@ public class MyArrayListTest {
      */
     @Test
     public void testGetSet() {
-        List211<Integer>    ial = new MyArrayList<>();
+        MyArrayList<Integer>    ial = new MyArrayList<>();
 
         for (int i = 0; i < MAX; i++) {
             ial.add(i);
@@ -68,14 +68,14 @@ public class MyArrayListTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testAddOutOfBounds() {
-        List211<Integer>    ial = new MyArrayList<>();
+        MyArrayList<Integer>    ial = new MyArrayList<>();
 
         ial.add(-1, 100);
     }
 
     @Test
     public void testAddSimple() {
-        List211<Integer>    ial = new MyArrayList<>();
+        MyArrayList<Integer>    ial = new MyArrayList<>();
 
         // Add some elements...
         for (int i = 0; i < MAX; i++) {
@@ -91,7 +91,7 @@ public class MyArrayListTest {
 
     @Test
     public void testAddMiddle() {
-        List211<Integer>    ial = new MyArrayList<>();
+        MyArrayList<Integer>    ial = new MyArrayList<>();
 
         // Add two elements so we get [0, MAX-1]
         ial.add(0);
@@ -126,7 +126,7 @@ public class MyArrayListTest {
 
     @Test
     public void testSort() {
-        List211<Integer>    ial = new MyArrayList<>();
+        MyArrayList<Integer>    ial = new MyArrayList<>();
 
         ial.add(2);
         ial.add(3);
@@ -144,7 +144,7 @@ public class MyArrayListTest {
 
     @Test
     public void testRemove() {
-        List211<Integer>    ial = new MyArrayList<>();
+        MyArrayList<Integer>    ial = new MyArrayList<>();
 
         // Add some elements...
         for (int i = 0; i < MAX; i++) {
@@ -183,5 +183,33 @@ public class MyArrayListTest {
             assertEquals(new Integer(i), ial.get(i-2));
         }
     }
-}
 
+    @Test
+    public void testOutOfBoundsRemove() {
+        MyArrayList<Integer>    ial = new MyArrayList<>();
+
+        // Add some elements...
+        for (int i = 0; i < MAX; i++) {
+            ial.add(i);
+        }
+
+        try {
+            ial.remove(-1);
+            fail("Shouldn't get here");
+        }
+        catch (Exception e) {
+
+        }
+
+        try {
+            ial.remove(MAX);
+            fail("Shouldn't get here");
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+
+
+}

@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 import java.util.NoSuchElementException;
+import java.util.ArrayList;
 import java.util.ListIterator;
 import org.junit.Test;
 
@@ -37,8 +38,8 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testEmpty() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
-        ListIterator<Integer>   it = ill.iterator();
+        ArrayList<Integer>   ill = new ArrayList<>();
+        ListIterator<Integer>   it = ill.listIterator();
 
         assertFalse(it.hasNext());
         assertFalse(it.hasPrevious());
@@ -52,13 +53,13 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testSingle() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+        ArrayList<Integer>   ill = new ArrayList<>();
         ListIterator<Integer>   it;
         Integer                 i;
 
         ill.add(0);
 
-        it = ill.iterator();
+        it = ill.listIterator();
 
         assertTrue(it.hasNext());
         assertFalse(it.hasPrevious());
@@ -80,7 +81,7 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testBackAndForth() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+        ArrayList<Integer>   ill = new ArrayList<>();
         ListIterator<Integer>   it;
         int                     i;
 
@@ -102,7 +103,7 @@ public class MyLinkedListIteratorTest {
         assertEquals(MAX, ill.size());
 
         // Move forward to the end of list...
-        it = ill.iterator();
+        it = ill.listIterator();
         i = 0;
         while (it.hasNext()) {
             int j;
@@ -136,7 +137,7 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testFor() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+        ArrayList<Integer>   ill = new ArrayList<>();
 
         // Add some elements...
         for (int i = 0; i < MAX; i++) {
@@ -154,7 +155,7 @@ public class MyLinkedListIteratorTest {
 
     @Test
     public void testIndex() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
+        ArrayList<Integer>   ill = new ArrayList<>();
         ListIterator<Integer>   it;
         int                     i;
 
@@ -163,7 +164,7 @@ public class MyLinkedListIteratorTest {
             ill.add(i);
         }
 
-        it = ill.iterator();
+        it = ill.listIterator();
         i = 0;
         while (it.hasNext()) {
             assertEquals(new Integer(i), ill.get(it.nextIndex()));
@@ -174,6 +175,8 @@ public class MyLinkedListIteratorTest {
             assertTrue(i <= MAX);
         }
 
+        assertEquals(ill.size(), it.nextIndex());
+
         while (it.hasPrevious()) {
             i--;
             assertEquals(new Integer(i), ill.get(it.previousIndex()));
@@ -182,5 +185,7 @@ public class MyLinkedListIteratorTest {
             // Check for excessive looping/infinite loop...
             assertTrue(i >= 0);
         }
+
+        assertEquals(-1, it.previousIndex());
     }
 }

@@ -1,14 +1,7 @@
 import static org.junit.Assert.*;
 
-import java.util.Comparator;
-
 import org.junit.Test;
 
-class IntComparator implements Comparator<Integer> {
-    public int compare(Integer a, Integer b) {
-        return a.compareTo(b);
-    }
-}
 
 
 public class MyLinkedListTest {
@@ -16,14 +9,14 @@ public class MyLinkedListTest {
 
     @Test
     public void testEmpty() {
-        List211<Integer>    ial = new MyLinkedList<>();
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
 
         assertEquals(0, ial.size());
         try {
             ial.get(0);
             fail("Bad stuff");
         }
-            catch (IndexOutOfBoundsException e) {
+        catch (IndexOutOfBoundsException e) {
         }
     }
 
@@ -35,7 +28,7 @@ public class MyLinkedListTest {
      */
     @Test
     public void testGetSet() {
-        List211<Integer>    ial = new MyLinkedList<>();
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
 
         for (int i = 0; i < MAX; i++) {
             ial.add(i);
@@ -68,14 +61,14 @@ public class MyLinkedListTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testAddOutOfBounds() {
-        List211<Integer>    ial = new MyLinkedList<>();
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
 
         ial.add(-1, 100);
     }
 
     @Test
     public void testAddSimple() {
-        List211<Integer>    ial = new MyLinkedList<>();
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
 
         // Add some elements...
         for (int i = 0; i < MAX; i++) {
@@ -91,7 +84,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testAddMiddle() {
-        List211<Integer>    ial = new MyLinkedList<>();
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
 
         // Add two elements so we get [0, MAX-1]
         ial.add(0);
@@ -126,7 +119,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testSort() {
-        List211<Integer>    ial = new MyLinkedList<>();
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
 
         ial.add(2);
         ial.add(3);
@@ -142,9 +135,10 @@ public class MyLinkedListTest {
         }
     }
 
+
     @Test
     public void testRemove() {
-        List211<Integer>    ial = new MyLinkedList<>();
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
 
         // Add some elements...
         for (int i = 0; i < MAX; i++) {
@@ -183,5 +177,65 @@ public class MyLinkedListTest {
             assertEquals(new Integer(i), ial.get(i-2));
         }
     }
-}
 
+    @Test
+    public void testOutOfBoundsRemove() {
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
+
+        // Add some elements...
+        for (int i = 0; i < MAX; i++) {
+            ial.add(i);
+        }
+
+        try {
+            ial.remove(-1);
+            fail("Shouldn't get here");
+        }
+        catch (Exception e) {
+
+        }
+
+        try {
+            ial.remove(MAX);
+            fail("Shouldn't get here");
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    @Test
+    public void testFillEmptyFill() {
+        MyLinkedList<Integer>   ial = new MyLinkedList<>();
+
+        // Add some elements...
+        for (int i = 0; i < MAX; i++) {
+            ial.add(i);
+        }
+
+        // Make sure the elements were added correctly.  MAX should be big enough
+        // to cause a resize.
+        for (int i = 0; i < MAX; i++) {
+            assertEquals(new Integer(i), ial.get(i));
+        }
+
+        for (int i = 0; i < MAX; i++) {
+            ial.remove(0);
+        }
+
+        assertEquals(0, ial.size());
+
+        for (int i = 0; i < MAX; i++) {
+            ial.add(i);
+        }
+
+        // Make sure the elements were added correctly.  MAX should be big enough
+        // to cause a resize.
+        for (int i = 0; i < MAX; i++) {
+            assertEquals(new Integer(i), ial.get(i));
+        }
+
+        assertEquals(MAX, ial.size());
+    }
+
+}
