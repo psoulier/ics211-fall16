@@ -167,6 +167,7 @@ public class MyLinkedListIteratorTest {
         i = 0;
         while (it.hasNext()) {
             assertEquals(new Integer(i), ill.get(it.nextIndex()));
+            it.next();
             i++;
 
             // Check for excessive looping/infinite loop...
@@ -176,51 +177,7 @@ public class MyLinkedListIteratorTest {
         while (it.hasPrevious()) {
             i--;
             assertEquals(new Integer(i), ill.get(it.previousIndex()));
-
-            // Check for excessive looping/infinite loop...
-            assertTrue(i >= 0);
-        }
-    }
-
-    /**
-     * Test combination of next/previous and nextIndex/previousIndex.
-     */
-    @Test
-    public void testAlternate() {
-        MyLinkedList<Integer>   ill = new MyLinkedList<>();
-        ListIterator<Integer>   it;
-        int                     i;
-
-        // Add some elements...
-        for (i = 0; i < MAX; i++) {
-            ill.add(i);
-        }
-
-        it = ill.iterator();
-        i = 0;
-        while (it.hasNext()) {
-            if ((i%2) == 0) {
-                assertEquals(new Integer(i), ill.get(it.nextIndex()));
-            }
-            else {
-                assertEquals(new Integer(i), it.next());
-            }
-
-            i++;
-
-            // Check for excessive looping/infinite loop...
-            assertTrue(i <= MAX);
-        }
-
-        while (it.hasPrevious()) {
-            i--;
-
-            if ((i%2) == 0) {
-                assertEquals(new Integer(i), ill.get(it.previousIndex()));
-            }
-            else {
-                assertEquals(new Integer(i), it.previous());
-            }
+            it.previous();
 
             // Check for excessive looping/infinite loop...
             assertTrue(i >= 0);
