@@ -38,7 +38,7 @@ public class MyLinkedListIteratorTest {
     @Test
     public void testEmpty() {
         MyLinkedList<Integer>   ill = new MyLinkedList<>();
-        ListIterator<Integer>   it = ill.listIterator();
+        ListIterator<Integer>   it = ill.iterator();
 
         assertFalse(it.hasNext());
         assertFalse(it.hasPrevious());
@@ -58,7 +58,7 @@ public class MyLinkedListIteratorTest {
 
         ill.add(0);
 
-        it = ill.listIterator();
+        it = ill.iterator();
 
         assertTrue(it.hasNext());
         assertFalse(it.hasPrevious());
@@ -102,7 +102,7 @@ public class MyLinkedListIteratorTest {
         assertEquals(MAX, ill.size());
 
         // Move forward to the end of list...
-        it = ill.listIterator();
+        it = ill.iterator();
         i = 0;
         while (it.hasNext()) {
             int j;
@@ -163,7 +163,7 @@ public class MyLinkedListIteratorTest {
             ill.add(i);
         }
 
-        it = ill.listIterator();
+        it = ill.iterator();
         i = 0;
         while (it.hasNext()) {
             assertEquals(new Integer(i), ill.get(it.nextIndex()));
