@@ -1,6 +1,6 @@
 import static org.junit.Assert.*;
 import java.util.NoSuchElementException;
-import java.util.ArrayList;
+import java.util.MyLinkedList;
 import java.util.ListIterator;
 import org.junit.Test;
 
@@ -38,7 +38,7 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testEmpty() {
-        ArrayList<Integer>   ill = new ArrayList<>();
+        MyLinkedList<Integer>   ill = new MyLinkedList<>();
         ListIterator<Integer>   it = ill.listIterator();
 
         assertFalse(it.hasNext());
@@ -53,7 +53,7 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testSingle() {
-        ArrayList<Integer>   ill = new ArrayList<>();
+        MyLinkedList<Integer>   ill = new MyLinkedList<>();
         ListIterator<Integer>   it;
         Integer                 i;
 
@@ -81,7 +81,7 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testBackAndForth() {
-        ArrayList<Integer>   ill = new ArrayList<>();
+        MyLinkedList<Integer>   ill = new MyLinkedList<>();
         ListIterator<Integer>   it;
         int                     i;
 
@@ -137,7 +137,7 @@ public class MyLinkedListIteratorTest {
      */
     @Test
     public void testFor() {
-        ArrayList<Integer>   ill = new ArrayList<>();
+        MyLinkedList<Integer>   ill = new MyLinkedList<>();
 
         // Add some elements...
         for (int i = 0; i < MAX; i++) {
@@ -155,7 +155,7 @@ public class MyLinkedListIteratorTest {
 
     @Test
     public void testIndex() {
-        ArrayList<Integer>   ill = new ArrayList<>();
+        MyLinkedList<Integer>   ill = new MyLinkedList<>();
         ListIterator<Integer>   it;
         int                     i;
 
