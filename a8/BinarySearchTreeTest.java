@@ -85,7 +85,7 @@ public class BinarySearchTreeTest {
          * one since they should already be in the tree.
          */
         for (Integer i : bl) {
-            assertTrue(btree.add(i));
+            assertFalse(btree.add(i));
         }
     }
 
